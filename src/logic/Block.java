@@ -1,5 +1,10 @@
 package logic;
 
-public class Block extends Entity {
-
+public abstract class Block extends Entity {
+	protected int types;
+	public Block(){
+		
+	}
+	
+	public abstract boolean isDestroyed();
 }
