@@ -1,13 +1,6 @@
 package model;
 
-<<<<<<< HEAD
-public abstract class Item extends Entity{
-	
-	public Item(int x,int y,int direction){
-		super(x, y, direction);
-	}
-	
-=======
+
 import javafx.scene.canvas.GraphicsContext;
 
 public class Item extends Entity{
@@ -35,5 +28,5 @@ public class Item extends Entity{
 		
 	}
 
->>>>>>> origin/master
+
 }
