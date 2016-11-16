@@ -4,8 +4,8 @@ import javafx.scene.canvas.GraphicsContext;
 
 public abstract class Player extends Entity{
 	
-	protected int life,score,range,quantity,moveDelay,moveDelayCounter;
-	protected boolean isDestroy,isWin;
+	private int life,score,range,quantity,movingDelay,movingDelayCounter;
+	private boolean isWin;
 	protected String name;
 	
 	public Player(int x,int y, int direction,String name){
@@ -17,14 +17,7 @@ public abstract class Player extends Entity{
 		this.isDestroy = false;
 		this.isWin = false;
 		this.name = name;
-		this.moveDelay = ??;
-		this.moveDelayCounter =??;
 		
 	}
-
-	public void move(){
-		
-	}
-	
 	
 }

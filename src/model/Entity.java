@@ -18,7 +18,6 @@ public abstract class Entity implements IRenderableObject{
 		this.direction = direction;
 	}
 
-	@Override
 	public int getZ() {
 		// TODO Auto-generated method stub
 		return z;
@@ -79,8 +78,4 @@ public abstract class Entity implements IRenderableObject{
 	public void setDestroy(boolean isDestroy) {
 		this.isDestroy = isDestroy;
 	}
-	
-
-	
-	
 }
