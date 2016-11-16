@@ -1,6 +1,5 @@
 package model;
 
-import javafx.scene.canvas.GraphicsContext;
 import lib.IRenderableObject;
 
 public abstract class Entity implements IRenderableObject{
@@ -16,6 +15,7 @@ public abstract class Entity implements IRenderableObject{
 		this.x = x;
 		this.y = y;
 		this.direction = direction;
+		isDestroy = false;
 	}
 
 	public int getZ() {

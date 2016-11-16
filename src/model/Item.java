@@ -3,30 +3,39 @@ package model;
 
 import javafx.scene.canvas.GraphicsContext;
 
-public class Item extends Entity{
-
+public abstract class Item extends Entity{
+	
+	private int life;
+	private boolean isCollect;
+	
 	public Item(int x, int y, int direction) {
 		super(x, y, direction);
-		// TODO Auto-generated constructor stub
+		life = 1;
+		isCollect = false;
+		z = 1;
 	}
 
+	public boolean isCollect(){
+		return isCollect;
+	}
+	
 	@Override
 	public boolean isDestroy() {
-		// TODO Auto-generated method stub
-		return false;
+		return isDestroy;
 	}
 
 	@Override
 	public int getZ() {
-		// TODO Auto-generated method stub
-		return 0;
+		return z;
 	}
 
 	@Override
 	public void render(GraphicsContext gc) {
-		// TODO Auto-generated method stub
 		
 	}
-
+	
+	public void useItem(Player p) {
+		
+	}
 
 }
