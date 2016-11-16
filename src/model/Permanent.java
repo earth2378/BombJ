@@ -1,5 +1,5 @@
 package model;
 
-public class Permanent {
+public class Permanent extends Block{
 
 }
