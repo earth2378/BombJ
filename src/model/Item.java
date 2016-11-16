@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 public abstract class Item extends Entity{
 	
-	private int life;
+	protected int life;
 	private boolean isCollect;
 	
 	public Item(int x, int y, int direction) {
