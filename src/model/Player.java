@@ -5,6 +5,7 @@ public abstract class Player extends Entity{
 	// moving delay is required
 	private int life,score,range,quantity,movingDelay;
 	private int movingDelayCounter = 0;
+	private int moveSpeed = 60;
 	private boolean isWin;
 	protected String name;
 	

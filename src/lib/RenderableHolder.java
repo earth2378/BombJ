@@ -6,19 +6,18 @@ import java.util.Comparator;
 import java.util.List;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
-import lib.IRenderableHolder;
+import lib.RenderableHolder;
 import lib.IRenderableObject;
 
-public class IRenderableHolder {
+public class RenderableHolder {
 	
-	private static final IRenderableHolder instance = new IRenderableHolder();
+	private static final RenderableHolder instance = new RenderableHolder();
 	private List<IRenderableObject> entities;
 	private Comparator<IRenderableObject> comparator;
-	private static Image[] player1Up,player1Down,player1Left,player1Right,player2Up,player2Down,player2Left,player2Right,enemy,bomb;
-	private static Image explodable,permanent,heart,range,quantity;
+	private static Image[] player1Up,player1Down,player1Left,player1Right,player2Up,player2Down,player2Left,player2Right,bomb;
+	private static Image explodable,permanent,heart,range,quantity,enemyup,enemydown,enemyright,enemyleft;
 	
-	public IRenderableHolder(){
+	public RenderableHolder(){
 		entities = new ArrayList<>();
 		comparator = (IRenderableObject o1, IRenderableObject o2) -> {
 			if (o1.getZ() > o2.getZ())
@@ -38,6 +37,10 @@ public class IRenderableHolder {
 		heart = new Image(loader.getResource("img/heart.png").toString());
 		range = new Image(loader.getResource("img/range.png").toString());
 		quantity = new Image(loader.getResource("img/quantity.png").toString());
+		enemyup = new Image(loader.getResource("img/enemyup.png").toString());
+		enemydown = new Image(loader.getResource("img/enemydown.png").toString());
+		enemyright = new Image(loader.getResource("img/enemyright.png").toString());
+		enemyleft = new Image(loader.getResource("img/enemyleft.png").toString());
 		
 		player1Up = new Image[4];
 		player1Down = new Image[4];
@@ -84,7 +87,7 @@ public class IRenderableHolder {
 		
 	}
 	
-	public static IRenderableHolder getInstance() {
+	public static RenderableHolder getInstance() {
 		return instance;
 	}
 	
