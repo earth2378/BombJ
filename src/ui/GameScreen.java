@@ -5,7 +5,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 
 
 public class GameScreen extends BorderPane{
@@ -33,8 +32,8 @@ public class GameScreen extends BorderPane{
 			Image bg = new Image(ClassLoader.getSystemClassLoader().getResource("img/bg2.jpg").toString());
 			gc.drawImage(bg, 0, 0);
 		}else if (type == 2){
-			gc.setFill(Color.AQUA);
-			gc.fillRect(0, 0, 800, 650);
+			Image bg = new Image(ClassLoader.getSystemClassLoader().getResource("img/instruction.jpg").toString());
+			gc.drawImage(bg, 0, 0);
 		}
 		
 	}

@@ -1,24 +1,33 @@
 package model;
 
 import javafx.scene.canvas.GraphicsContext;
+import lib.RenderableHolder;
 
 public class Enemy extends Entity{
-	protected int moveDelay,moveDelayCounter;
-		
+	
+	protected int moveDelayCounter = 0;
+	protected final int moveDelay = 2;
+	
 	public Enemy(int x, int y, int direction) {
 		super(x, y, direction);
-		// TODO Auto-generated constructor stub
 		this.isDestroy = false;
 	}
 
 	@Override
 	public void render(GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		
+		if(direction == 0){
+			gc.drawImage(RenderableHolder.enemyleft, x, y);
+		}else if(direction == 1){
+			gc.drawImage(RenderableHolder.enemyup, x, y);
+		}else if(direction == 2){
+			gc.drawImage(RenderableHolder.enemyright, x, y);
+		}else if(direction == 3){
+			gc.drawImage(RenderableHolder.enemydown, x, y);
+		}
 	}
 	
 	public void attackPlayer(Player player){
-		player.setDestroy(false);
+		player.setDestroy(true);
 	}
 	
 	public void move(){

@@ -1,5 +1,8 @@
 package model;
 
+import javafx.scene.canvas.GraphicsContext;
+import lib.RenderableHolder;
+
 public class Range extends Item{
 
 	public Range(int x, int y, int direction) {
@@ -12,6 +15,12 @@ public class Range extends Item{
 			p.setRange(p.getRange() + 1);
 			life--;
 		}
+	}
+
+	@Override
+	public void render(GraphicsContext gc) {
+		gc.drawImage(RenderableHolder.range, x, y);
+		
 	}
 	
 }

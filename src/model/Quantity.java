@@ -1,5 +1,8 @@
 package model;
 
+import javafx.scene.canvas.GraphicsContext;
+import lib.RenderableHolder;
+
 public class Quantity extends Item {
 
 	public Quantity(int x, int y, int direction) {
@@ -12,6 +15,11 @@ public class Quantity extends Item {
 			p.setQuantity(p.getQuantity() + 1);
 			life--;
 		}
+	}
+
+	@Override
+	public void render(GraphicsContext gc) {
+		gc.drawImage(RenderableHolder.quantity, x, y);
 	}
 
 }

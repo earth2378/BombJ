@@ -30,9 +30,7 @@ public abstract class Item extends Entity{
 	}
 
 	@Override
-	public void render(GraphicsContext gc) {
-		
-	}
+	public abstract void render(GraphicsContext gc);
 	
 	public abstract void useItem(Player p);
 

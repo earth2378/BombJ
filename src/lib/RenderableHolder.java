@@ -14,8 +14,8 @@ public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
 	private List<IRenderableObject> entities;
 	private Comparator<IRenderableObject> comparator;
-	private static Image[] player1Up,player1Down,player1Left,player1Right,player2Up,player2Down,player2Left,player2Right,bomb;
-	private static Image explodable,permanent,heart,range,quantity,enemyup,enemydown,enemyright,enemyleft;
+	public static Image[] player1Up,player1Down,player1Left,player1Right,player2Up,player2Down,player2Left,player2Right,bomb1,bomb2;
+	public static Image explodable,permanent,heart,range,quantity,enemyup,enemydown,enemyright,enemyleft,flame1,flame2,plain;
 	
 	public RenderableHolder(){
 		entities = new ArrayList<>();
@@ -84,6 +84,18 @@ public class RenderableHolder {
 		player2Right[1] = new Image(loader.getResource("img/player2right2.png").toString());
 		player2Right[2] = new Image(loader.getResource("img/player2right3.png").toString());
 		player2Right[3] = new Image(loader.getResource("img/player2right4.png").toString());
+		
+		bomb1 = new Image[2];
+		bomb2 = new Image[2];
+		
+		bomb1[0] = new Image(loader.getResource("img/bomb1c1.png").toString());
+		bomb1[1] = new Image(loader.getResource("img/bomb1c2.png").toString());
+		bomb2[0] = new Image(loader.getResource("img/bomb2c1.png").toString());
+		bomb2[1] = new Image(loader.getResource("img/bomb2c2.png").toString());
+		
+		flame1 = new Image(loader.getResource("img/flame1.png").toString());
+		flame2 = new Image(loader.getResource("img/flame2.png").toString());
+		plain = new Image(loader.getResource("img/plain.jpg").toString());
 		
 	}
 	

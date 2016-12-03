@@ -44,6 +44,10 @@ public abstract class Player extends Entity{
 	public String getName(){
 		return name;
 	}
+	
+	public int getMoveSpeed(){
+		return moveSpeed;
+	}
 
 	public void setLife(int life) {
 		this.life = life;

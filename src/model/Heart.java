@@ -1,5 +1,8 @@
 package model;
 
+import javafx.scene.canvas.GraphicsContext;
+import lib.RenderableHolder;
+
 public class Heart extends Item {
 	
 	public Heart(int x, int y, int direction) {
@@ -12,6 +15,11 @@ public class Heart extends Item {
 			p.setLife(p.getLife() + life);
 			life--;
 		}
+	}
+
+	@Override
+	public void render(GraphicsContext gc) {
+		gc.drawImage(RenderableHolder.heart, x, y);
 	}
 	
 }
