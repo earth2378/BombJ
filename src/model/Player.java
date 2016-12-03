@@ -1,7 +1,5 @@
 package model;
 
-import javafx.scene.canvas.GraphicsContext;
-
 public abstract class Player extends Entity{
 	
 	// moving delay is required

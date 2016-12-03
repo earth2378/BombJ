@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class Explodable extends Block{
 	private int life;
+	public static final String path = ClassLoader.getSystemClassLoader().getResource("img/explodable.png").toString();
 	
 	public Explodable(int x, int y) {
 		super(x, y);
