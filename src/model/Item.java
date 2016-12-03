@@ -34,8 +34,6 @@ public abstract class Item extends Entity{
 		
 	}
 	
-	public void useItem(Player p) {
-		
-	}
+	public abstract void useItem(Player p);
 
 }
