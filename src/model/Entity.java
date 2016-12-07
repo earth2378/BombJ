@@ -9,6 +9,7 @@ public abstract class Entity implements IRenderableObject{
 	public static final int NORTH = 1;
 	public static final int EAST = 2;
 	public static final int SOUTH = 3;
+	public boolean isPass = true;
 	
 	
 	public Entity(int x, int y, int direction){
@@ -30,12 +31,24 @@ public abstract class Entity implements IRenderableObject{
 		return x;
 	}
 	public void setX(int x) {
+		if(x<=0){
+			x=0;
+		}else if(x>=600){
+			x=600;
+		}
+		
 		this.x = x;
 	}
 	public int getY() {
 		return y;
 	}
 	public void setY(int y) {
+		if(y<=0){
+			y=0;
+		}else if(y>=600){
+			y=600;
+		}
+		
 		this.y = y;
 	}
 

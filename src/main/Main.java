@@ -4,6 +4,7 @@ import com.sun.org.apache.bcel.internal.classfile.Code;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -17,6 +18,7 @@ import lib.CodeUtility;
 import lib.IRenderableObject;
 import lib.RenderableHolder;
 import logic.GameManager;
+import model.Enemy;
 import ui.GameScreen;
 
 public class Main extends Application{
@@ -76,12 +78,53 @@ public class Main extends Application{
 							|| event.getCode() == KeyCode.D  || event.getCode() == KeyCode.UP  || event.getCode() == KeyCode.DOWN
 							|| event.getCode() == KeyCode.RIGHT  || event.getCode() == KeyCode.LEFT || event.getCode() == KeyCode.SPACE
 							|| event.getCode() == KeyCode.CONTROL){
-						if(CodeUtility.keyPressed.contains(event)){
-							gameManager.dropKey(event.getCode());
-						}
+						gameManager.dropKey(event.getCode());
 					}
 				}
 			});
+			
+			//enemy
+			Enemy e1 = new Enemy(600, 0, model.Entity.SOUTH);
+			Enemy e2 = new Enemy(0, 600, model.Entity.NORTH);
+			RenderableHolder.getInstance().add(e1);
+			RenderableHolder.getInstance().add(e2);
+			
+			Thread t1 = new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					while(!e1.isDestroy()){
+						try {
+							Thread.sleep(1000);
+						} catch (Exception e) {
+							// TODO: handle exception
+						}
+						
+						e1.move();
+					}
+				}
+			});
+			
+			Thread t2 = new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					while(!e2.isDestroy()){
+						try {
+							Thread.sleep(1000);
+						} catch (Exception e) {
+							// TODO: handle exception
+						}
+						
+						e2.move();
+					}
+				}
+			});
+			
+			t1.start();
+			t2.start();
 			
 			new AnimationTimer() {
 				Long start = 0l;
@@ -95,8 +138,7 @@ public class Main extends Application{
 					if(diff>=100000000l){
 						start = 0l;
 						gameManager.update();
-						gameWindow.paintComponents();
-						
+						gameWindow.paintComponents();	
 					}
 				}
 			}.start();
