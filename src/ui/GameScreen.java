@@ -24,7 +24,7 @@ public class GameScreen extends BorderPane {
 		Image bg = new Image(loader.getResource("img/bg2.jpg").toString());
 		Canvas canvas = new Canvas(800,600);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		gc.drawImage(bg, 0, 0);
+		gc.drawImage(bg, 12,12);
 		GridPane bottom = new GridPane();
 		bottom.setPrefSize(800, 50);
 		bottom.setAlignment(Pos.CENTER);
@@ -51,15 +51,15 @@ public class GameScreen extends BorderPane {
 				// TODO Auto-generated method stub
 				if (instruction.getText() == "How to play?") {
 					Image bg1 = new Image(ClassLoader.getSystemClassLoader().getResource("img/instruction.jpg").toString());
-					gc.drawImage(bg1, 0, 0);
+					gc.drawImage(bg1, 12, 12);
 					instruction.setText("Next");
 				} else if (instruction.getText() == "Next") {
 					Image bg2 = new Image(ClassLoader.getSystemClassLoader().getResource("img/instruction2.jpg").toString());
-					gc.drawImage(bg2, 0, 0);
+					gc.drawImage(bg2, 12, 12);
 					instruction.setText("I got it!!");
 				} else if (instruction.getText() == "I got it!!") {
 					Image bg2 = new Image(ClassLoader.getSystemClassLoader().getResource("img/bg2.jpg").toString());
-					gc.drawImage(bg2, 0, 0);
+					gc.drawImage(bg2, 12, 12);
 					instruction.setText("How to play?");
 				}
 			}
@@ -75,7 +75,7 @@ public class GameScreen extends BorderPane {
 
 			@Override
 			public void handle(ActionEvent event) {
-				stage.setScene(Main.instance.secondScene);
+				stage.setScene(Main.instance.gameScene);
 			}
 		});
 		
