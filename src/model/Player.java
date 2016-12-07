@@ -7,13 +7,14 @@ public abstract class Player extends Entity{
 	private int movingDelayCounter = 1;
 	private int moveSpeed = 60;
 	private boolean isWin;
+	private int bombCount = 0;
 	protected String name;
 	
 	public Player(int x,int y, int direction,String name){
 		super(x,y,direction);
-		this.life = 1000;
+		this.life = 10;
 		this.score = 0;
-		this.range = 3;
+		this.range = 1;
 		this.quantity = 1;
 		this.isDestroy = false;
 		this.isWin = false;
@@ -87,7 +88,14 @@ public abstract class Player extends Entity{
 	public void setMovingDelayCounter(int movingDelayCounter) {
 		this.movingDelayCounter = movingDelayCounter;
 	}
-	
+
+	public int getBombCount() {
+		return bombCount;
+	}
+
+	public void setBombCount(int bombCount) {
+		this.bombCount = bombCount;
+	}
 	
 	
 }

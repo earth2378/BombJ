@@ -11,9 +11,9 @@ public class Heart extends Item {
 	
 	@Override
 	public void useItem(Player p) {
-		if(life > 0){
+		if(!isDestroy){
 			p.setLife(p.getLife() + life);
-			life--;
+			isDestroy = true;
 		}
 	}
 

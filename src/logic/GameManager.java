@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.Random;
+
 import javafx.scene.input.KeyCode;
 import lib.CodeUtility;
 import lib.RenderableHolder;
@@ -7,9 +9,13 @@ import model.Bomb;
 import model.Enemy;
 import model.Explodable;
 import model.Flame;
+import model.Heart;
+import model.Item;
 import model.Permanent;
 import model.Player1;
 import model.Player2;
+import model.Quantity;
+import model.Range;
 
 public class GameManager {
 	
@@ -84,9 +90,7 @@ public class GameManager {
 		moveBomb();
 		flameAround();
 		moveEnemy();
-		
-		System.out.println("p1 "+p1.getLife());
-		System.out.println("p2 "+p2.getLife());
+		checkItem();
 		if(checkWin()){
 			
 		}
@@ -167,8 +171,11 @@ public class GameManager {
 				}
 				
 			}else if(CodeUtility.keyPressed.contains(KeyCode.SPACE)){
-				RenderableHolder.getInstance().addAndSort(new Bomb(p1.getX(), p1.getY(), p1, p1.getRange()));
-				field.setField(p1.getX()/60, p1.getY()/60, 1);
+				if(p1.getBombCount()<p1.getQuantity()){
+					RenderableHolder.getInstance().addAndSort(new Bomb(p1.getX(), p1.getY(), p1, p1.getRange()));
+					field.setField(p1.getX()/60, p1.getY()/60, 1);
+					p1.setBombCount(p1.getBombCount()+1);
+				}
 			}
 		}
 	}
@@ -220,8 +227,11 @@ public class GameManager {
 					}
 				}
 			}else if(CodeUtility.keyPressed.contains(KeyCode.CONTROL)){
-				RenderableHolder.getInstance().addAndSort(new Bomb(p2.getX(), p2.getY(), p2, p2.getRange()));
-				field.setField(p2.getX()/60, p2.getY()/60, 1);
+				if(p2.getBombCount() < p2.getQuantity()){
+					RenderableHolder.getInstance().addAndSort(new Bomb(p2.getX(), p2.getY(), p2, p2.getRange()));
+					field.setField(p2.getX()/60, p2.getY()/60, 1);
+					p2.setBombCount(p2.getBombCount()+1);
+				}
 			}
 		}
 	}
@@ -232,6 +242,7 @@ public class GameManager {
 				if(((Bomb) RenderableHolder.getInstance().getEntities().get(i)).isAfterboom() == 1){
 					field.setField(((Bomb) RenderableHolder.getInstance().getEntities().get(i)).getX()/60, ((Bomb) RenderableHolder.getInstance().getEntities().get(i)).getY()/60, 0);
 					((Bomb) RenderableHolder.getInstance().getEntities().get(i)).setDestroy(true);
+					((Bomb) RenderableHolder.getInstance().getEntities().get(i)).getPlayer().setBombCount(((Bomb) RenderableHolder.getInstance().getEntities().get(i)).getPlayer().getBombCount()-1);
 				}
 				
 				if(((Bomb) RenderableHolder.getInstance().getEntities().get(i)).getCount() < 15){
@@ -285,7 +296,7 @@ public class GameManager {
 		
 	}
 	
-	public void flameAround(){
+	private void flameAround(){
 		for(int i=0;i<RenderableHolder.getInstance().getEntities().size();i++){
 			if(RenderableHolder.getInstance().getEntities().get(i) instanceof  Flame){
 				if(((Flame) RenderableHolder.getInstance().getEntities().get(i)).getAfterburn() == 1){
@@ -295,21 +306,43 @@ public class GameManager {
 								if(((Player1)RenderableHolder.getInstance().getEntities().get(j)).getX() == ((Flame)RenderableHolder.getInstance().getEntities().get(i)).getX()
 										&&((Player1)RenderableHolder.getInstance().getEntities().get(j)).getY() == ((Flame)RenderableHolder.getInstance().getEntities().get(i)).getY()){
 									((Player1)RenderableHolder.getInstance().getEntities().get(j)).setLife(((Player1)RenderableHolder.getInstance().getEntities().get(j)).getLife()-1);
+									if(((Player1)RenderableHolder.getInstance().getEntities().get(j)).isDestroy()){
+										p2.setScore(p2.getScore() + 2000);
+									}
 								}
 							}else if(RenderableHolder.getInstance().getEntities().get(j) instanceof Player2){
 								if(((Player2)RenderableHolder.getInstance().getEntities().get(j)).getX() == ((Flame)RenderableHolder.getInstance().getEntities().get(i)).getX()
 										&&((Player2)RenderableHolder.getInstance().getEntities().get(j)).getY() == ((Flame)RenderableHolder.getInstance().getEntities().get(i)).getY()){
 									((Player2)RenderableHolder.getInstance().getEntities().get(j)).setLife(((Player2)RenderableHolder.getInstance().getEntities().get(j)).getLife()-1);
+									if(((Player2)RenderableHolder.getInstance().getEntities().get(j)).isDestroy()){
+										p1.setScore(p1.getScore() + 2000);
+									}
 								}
 							}else if(RenderableHolder.getInstance().getEntities().get(j) instanceof Explodable){
 								if(((Explodable)RenderableHolder.getInstance().getEntities().get(j)).getX() == ((Flame)RenderableHolder.getInstance().getEntities().get(i)).getX()
 										&&((Explodable)RenderableHolder.getInstance().getEntities().get(j)).getY() == ((Flame)RenderableHolder.getInstance().getEntities().get(i)).getY()){
 									((Explodable)RenderableHolder.getInstance().getEntities().get(j)).setLife(((Explodable)RenderableHolder.getInstance().getEntities().get(j)).getLife()-1);
+									if(((Flame) RenderableHolder.getInstance().getEntities().get(i)).getPlayer() == p1){
+										p1.setScore(p1.getScore() + 100);
+									}else if(((Flame) RenderableHolder.getInstance().getEntities().get(i)).getPlayer() == p2){
+										p2.setScore(p2.getScore() + 100);
+									}
+									randomItem(((Explodable)RenderableHolder.getInstance().getEntities().get(j)).getX(), ((Explodable)RenderableHolder.getInstance().getEntities().get(j)).getY());
 								}
 							}else if(RenderableHolder.getInstance().getEntities().get(j) instanceof Enemy){
 								if(((Enemy)RenderableHolder.getInstance().getEntities().get(j)).getX() == ((Flame)RenderableHolder.getInstance().getEntities().get(i)).getX()
 										&&((Enemy)RenderableHolder.getInstance().getEntities().get(j)).getY() == ((Flame)RenderableHolder.getInstance().getEntities().get(i)).getY()){
+									if(((Flame) RenderableHolder.getInstance().getEntities().get(i)).getPlayer() == p1){
+										p1.setScore(p1.getScore() + 500);
+									}else if(((Flame) RenderableHolder.getInstance().getEntities().get(i)).getPlayer() == p2){
+										p2.setScore(p2.getScore() + 500);
+									}
 									((Enemy)RenderableHolder.getInstance().getEntities().get(j)).setDestroy(true);
+								}
+							}else if(RenderableHolder.getInstance().getEntities().get(j) instanceof Item){
+								if(((Item)RenderableHolder.getInstance().getEntities().get(j)).getX() == ((Flame)RenderableHolder.getInstance().getEntities().get(i)).getX()
+										&&((Item)RenderableHolder.getInstance().getEntities().get(j)).getY() == ((Flame)RenderableHolder.getInstance().getEntities().get(i)).getY()){
+									((Item)RenderableHolder.getInstance().getEntities().get(j)).setLife(((Item)RenderableHolder.getInstance().getEntities().get(j)).getLife() - 1);
 								}
 							}
 						
@@ -324,7 +357,7 @@ public class GameManager {
 		}
 	}
 	
-	public void moveEnemy(){
+	private void moveEnemy(){
 		
 		if(!e1.isDestroy()){
 			e1.move();
@@ -348,6 +381,33 @@ public class GameManager {
 			}
 		}
 		
+	}
+	
+	private void randomItem(int x,int y){
+		Random rand = new Random();
+		int drop = rand.nextInt(100);
+		System.out.println(drop);
+		if(drop<=10){
+			RenderableHolder.getInstance().add(new Range(x, y,model.Entity.SOUTH));
+		}else if(drop <=20){
+			RenderableHolder.getInstance().add(new Heart(x, y, model.Entity.SOUTH));
+		}else if(drop<=30){
+			RenderableHolder.getInstance().getEntities().add(new Quantity(x, y, model.Entity.SOUTH));
+		}
+	}
+	
+	private void checkItem(){
+		for(int i=0;i<RenderableHolder.getInstance().getEntities().size();i++){
+			if(RenderableHolder.getInstance().getEntities().get(i) instanceof Item){
+				if(((Item)RenderableHolder.getInstance().getEntities().get(i)).getX() == p1.getX()
+						&& ((Item)RenderableHolder.getInstance().getEntities().get(i)).getY() == p1.getY()){
+					((Item)RenderableHolder.getInstance().getEntities().get(i)).useItem(p1);
+				}else if(((Item)RenderableHolder.getInstance().getEntities().get(i)).getX() == p2.getX()
+						&& ((Item)RenderableHolder.getInstance().getEntities().get(i)).getY() == p2.getY()){
+					((Item)RenderableHolder.getInstance().getEntities().get(i)).useItem(p2);
+				}
+			}
+		}
 	}
 	
 	public void receiveKey(KeyCode new_code){

@@ -11,9 +11,9 @@ public class Quantity extends Item {
 	
 	@Override
 	public void useItem(Player p) {
-		if(life > 0){
+		if(!isDestroy){
 			p.setQuantity(p.getQuantity() + 1);
-			life--;
+			isDestroy = true;
 		}
 	}
 

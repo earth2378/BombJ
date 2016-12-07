@@ -11,9 +11,9 @@ public class Range extends Item{
 
 	@Override
 	public void useItem(Player p) {
-		if(life > 0){
+		if(!isDestroy){
 			p.setRange(p.getRange() + 1);
-			life--;
+			isDestroy = true;
 		}
 	}
 

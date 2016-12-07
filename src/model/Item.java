@@ -10,7 +10,7 @@ public abstract class Item extends Entity{
 	
 	public Item(int x, int y, int direction) {
 		super(x, y, direction);
-		life = 1;
+		life = 3;
 		isCollect = false;
 		z = 1;
 	}
@@ -27,6 +27,17 @@ public abstract class Item extends Entity{
 	@Override
 	public int getZ() {
 		return z;
+	}
+	
+	public void setLife(int life) {
+		if(life <= 0){
+			isDestroy=true;
+		}
+		this.life = life;
+	}
+	
+	public int getLife() {
+		return life;
 	}
 
 	@Override
