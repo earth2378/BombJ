@@ -1,7 +1,7 @@
 package logic;
 
 public class Field {
-	public int[][] field = new int[10][10];
+	public int[][] field = new int[11][11];
 	
 	public Field(){
 		for(int i=0; i<=10;i++){
