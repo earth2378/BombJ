@@ -3,8 +3,10 @@ package logic;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import lib.CodeUtility;
+import lib.IRenderableObject;
 import lib.RenderableHolder;
 import model.Bomb;
+import model.Enemy;
 import model.Player1;
 import model.Player2;
 
@@ -21,7 +23,31 @@ public class GameManager {
 	}
 	
 	public void update(){
+		Thread threadP1 = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				moveP1();
+			}
+		});
 		
+		Thread threadP2 = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				moveP2();
+			}
+		});
+		
+		threadP1.start();
+		threadP2.start();
+		
+		if(checkWin()){
+			
+		}
+		
+		checkCollision();
+		removeDestroyEntity();
 	}
 	
 	private void removeDestroyEntity(){
@@ -33,7 +59,39 @@ public class GameManager {
 	}
 	
 	private void checkCollision(){
-		
+		for(IRenderableObject e : RenderableHolder.getInstance().getEntities()){
+			if(e instanceof Bomb){
+				if(e instanceof Bomb){
+					if(e.isDestroy()){
+						if(p1.getX() >= ((Bomb) e).getX() - ((Bomb) e).getRange()*60){
+							if(p1.getY() >= ((Bomb) e).getY() - ((Bomb) e).getRange()*60){
+								p1.setLife(p1.getLife() - 1);
+							}
+						}
+						
+						if(p2.getX() >= ((Bomb) e).getX() - ((Bomb) e).getRange()*60){
+							if(p2.getY() >= ((Bomb) e).getY() - ((Bomb) e).getRange()*60){
+								p2.setLife(p2.getLife() - 1);
+							}
+						}
+					}
+				}
+			}
+			
+			if(e instanceof Enemy){
+				if(p1.getX() == ((Enemy)e).getX()){
+					if(p1.getY() == ((Enemy)e).getY()){
+						p1.setLife(p1.getLife());
+					}
+				}
+				
+				if(p2.getX() == ((Enemy)e).getX()){
+					if(p2.getY() == ((Enemy)e).getY()){
+						p2.setLife(p2.getLife());
+					}
+				}
+			}
+		}
 	}
 	
 	private boolean checkWin(){
@@ -81,10 +139,14 @@ public class GameManager {
 	}
 	
 	public void receiveKey(KeyCode new_code){
-		
+		if(!CodeUtility.keyPressed.contains(new_code)){
+			CodeUtility.keyPressed.add(new_code);
+		}
 	}
 	
 	public void dropKey(KeyCode new_code){
-		
+		if(CodeUtility.keyPressed.contains(new_code)){
+			CodeUtility.keyPressed.remove(new_code);
+		}
 	}
 }

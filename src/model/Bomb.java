@@ -66,6 +66,10 @@ public class Bomb extends Entity implements IRenderableObject{
 		}
 	}
 	
+	public int getRange(){
+		return range;
+	}
+	
 	
 	
 }
