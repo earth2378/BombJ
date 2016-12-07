@@ -75,7 +75,7 @@ public class GameScreen extends BorderPane {
 
 			@Override
 			public void handle(ActionEvent event) {
-				stage.setScene(Main.instance.gameScene);
+				stage.setScene(Main.instance.secondScene);
 			}
 		});
 		
