@@ -12,7 +12,7 @@ public class GameWindow extends Canvas {
 		screen_width = width;
 	}
 	
-	public void f(){
+	public void paintComponents(){
 		setHeight(screen_height);
 		setWidth(screen_width);
 		GraphicsContext gc = this.getGraphicsContext2D();

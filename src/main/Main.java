@@ -21,11 +21,10 @@ public class Main extends Application{
 	
 	public static Main instance;
 	private Stage primaryStage;
-	private GameScreen startScreen;
-	private Canvas gameWindow;
+	private GameScreen gameScreen;
+	public Scene firstScene,secondScene;
 	private GameManager gameManager;
-	public Scene startScene,gameScene;
-	public boolean openGame = false;
+	private GameWindow gameWindow;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -34,10 +33,11 @@ public class Main extends Application{
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("TouhouBomberGirls");
 		this.primaryStage.setResizable(false);
-		startScreen = new GameScreen(primaryStage);
-		startScene = new Scene(startScreen);
-		primaryStage.setScene(startScene);
+		gameScreen = new GameScreen(primaryStage);
+		firstScene = new Scene(gameScreen);
+		primaryStage.setScene(firstScene);
 		primaryStage.show();
+		
 		
 		
 	}
