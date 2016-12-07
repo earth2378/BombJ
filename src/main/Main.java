@@ -45,7 +45,7 @@ public class Main extends Application{
 		Application.launch(args);
 		
 	}
-	/*public void gameStart(){
+	public void gameStart(){
 			Group root = new Group();
 			gameScene = new Scene(root,600,600);
 			root.getChildren().add(gameWindow);
@@ -93,11 +93,11 @@ public class Main extends Application{
 					if(diff>=100000000l){
 						start = 0l;
 						gameManager.update();
-						gameWindow.f
+						
 						
 					}
 				}
 			}.start();
 		
-	}*/
+	}
 }
