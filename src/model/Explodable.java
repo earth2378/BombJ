@@ -22,6 +22,9 @@ public class Explodable extends Block{
 
 	public void setLife(int life) {
 		this.life = life;
+		if(life==0){
+			isDestroy=true;
+		}
 	}
 
 }

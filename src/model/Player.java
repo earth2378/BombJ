@@ -4,16 +4,16 @@ public abstract class Player extends Entity{
 	
 	// moving delay is required
 	private int life,score,range,quantity,movingDelay;
-	private int movingDelayCounter = 0;
+	private int movingDelayCounter = 1;
 	private int moveSpeed = 60;
 	private boolean isWin;
 	protected String name;
 	
 	public Player(int x,int y, int direction,String name){
 		super(x,y,direction);
-		this.life = 3;
+		this.life = 1000;
 		this.score = 0;
-		this.range = 1;
+		this.range = 3;
 		this.quantity = 1;
 		this.isDestroy = false;
 		this.isWin = false;
@@ -51,6 +51,9 @@ public abstract class Player extends Entity{
 
 	public void setLife(int life) {
 		this.life = life;
+		if(life == 0){
+			isDestroy=true;
+		}
 	}
 
 	public void setScore(int score) {
@@ -68,5 +71,23 @@ public abstract class Player extends Entity{
 	public void setWin(boolean isWin) {
 		this.isWin = isWin;
 	}
+
+	public int getMovingDelay() {
+		return movingDelay;
+	}
+
+	public void setMovingDelay(int movingDelay) {
+		this.movingDelay = movingDelay;
+	}
+
+	public int getMovingDelayCounter() {
+		return movingDelayCounter;
+	}
+
+	public void setMovingDelayCounter(int movingDelayCounter) {
+		this.movingDelayCounter = movingDelayCounter;
+	}
+	
+	
 	
 }

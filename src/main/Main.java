@@ -1,24 +1,15 @@
 package main;
 
-import com.sun.org.apache.bcel.internal.classfile.Code;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import lib.CodeUtility;
-import lib.IRenderableObject;
-import lib.RenderableHolder;
 import logic.GameManager;
-import model.Enemy;
 import ui.GameScreen;
 
 public class Main extends Application{
@@ -27,8 +18,6 @@ public class Main extends Application{
 	private Stage primaryStage;
 	private GameScreen gameScreen;
 	public Scene firstScene,secondScene;
-	//private GameManager gameManager;
-	//private GameWindow gameWindow;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -83,54 +72,10 @@ public class Main extends Application{
 				}
 			});
 			
-			//enemy
-			Enemy e1 = new Enemy(600, 0, model.Entity.SOUTH);
-			Enemy e2 = new Enemy(0, 600, model.Entity.NORTH);
-			RenderableHolder.getInstance().add(e1);
-			RenderableHolder.getInstance().add(e2);
-			
-			Thread t1 = new Thread(new Runnable() {
-				
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					while(!e1.isDestroy()){
-						try {
-							Thread.sleep(1000);
-						} catch (Exception e) {
-							// TODO: handle exception
-						}
-						
-						e1.move();
-					}
-				}
-			});
-			
-			Thread t2 = new Thread(new Runnable() {
-				
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					while(!e2.isDestroy()){
-						try {
-							Thread.sleep(1000);
-						} catch (Exception e) {
-							// TODO: handle exception
-						}
-						
-						e2.move();
-					}
-				}
-			});
-			
-			t1.start();
-			t2.start();
-			
 			new AnimationTimer() {
 				Long start = 0l;
 				@Override
 				public void handle(long now) {
-					// TODO Auto-generated method stub
 					if(start==0l){
 						start = now;
 					}
@@ -138,7 +83,7 @@ public class Main extends Application{
 					if(diff>=100000000l){
 						start = 0l;
 						gameManager.update();
-						gameWindow.paintComponents();	
+						gameWindow.paintComponents();
 					}
 				}
 			}.start();

@@ -8,8 +8,8 @@ public class Bomb extends Entity implements IRenderableObject{
 	
 	private Player player;
 	private int range;
-	private final int BOMBDELAY = 4;
 	private int bombDelayCount = 0;
+	private int afterboom = 0;
 	private boolean isBoom = false;
 	
 	public Bomb(int x, int y, Player player, int range) {
@@ -41,6 +41,14 @@ public class Bomb extends Entity implements IRenderableObject{
 	
 	public boolean isBoom(){
 		return isBoom;
+	}
+	
+	public int isAfterboom() {
+		return afterboom;
+	}
+
+	public void setAfterboom(int afterboom) {
+		this.afterboom = afterboom;
 	}
 	
 	public void setBoom(boolean boom){

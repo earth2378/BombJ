@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.sun.swing.internal.plaf.synth.resources.synth;
+
 import javafx.scene.image.Image;
 import lib.RenderableHolder;
 import lib.IRenderableObject;
@@ -83,7 +85,7 @@ public class RenderableHolder {
 	}
 	
 	
-	public List<IRenderableObject> getEntities() {
+	public synchronized List<IRenderableObject> getEntities() {
 		return entities;
 	}
 }
