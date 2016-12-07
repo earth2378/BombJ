@@ -17,7 +17,7 @@ public class BottomPane extends GridPane {
 
 	public BottomPane(GraphicsContext gc) {
 		this.gc = gc;
-		setPrefSize(800, 50);
+		setPrefSize(800,650)
 		setAlignment(Pos.CENTER);
 		setStyle("-fx-background-image: url('img/bottomBG.png')");
 		start = new Button("Let's Go!!");
@@ -59,7 +59,7 @@ public class BottomPane extends GridPane {
 
 			@Override
 			public void handle(ActionEvent event) {
-				Main.instance.start(stage);
+				Main.instance.main();
 			}
 		});
 	}

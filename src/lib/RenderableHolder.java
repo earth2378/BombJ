@@ -88,7 +88,7 @@ public class RenderableHolder {
 		bomb1 = new Image[2];
 		bomb2 = new Image[2];
 		
-		bomb1[0] = new Image(loader.getResource("img/bomb1c1.png").toString());
+		bomb1[0] = new Image(loader.getResource("c").toString());
 		bomb1[1] = new Image(loader.getResource("img/bomb1c2.png").toString());
 		bomb2[0] = new Image(loader.getResource("img/bomb2c1.png").toString());
 		bomb2[1] = new Image(loader.getResource("img/bomb2c2.png").toString());

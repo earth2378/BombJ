@@ -18,13 +18,13 @@ import logic.GameManager;
 import ui.GameScreen;
 
 public class Main extends Application{
-
+	
 	public static Main instance;
 	private Stage primaryStage;
 	private GameScreen startScreen;
 	private Canvas gameWindow;
 	private GameManager gameManager;
-	private Scene startScene,gameScene;
+	public Scene startScene,gameScene;
 	public boolean openGame = false;
 	
 	@Override
@@ -34,17 +34,15 @@ public class Main extends Application{
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("TouhouBomberGirls");
 		this.primaryStage.setResizable(false);
-		startScreen = new GameScreen();
+		startScreen = new GameScreen(primaryStage);
 		startScene = new Scene(startScreen);
 		primaryStage.setScene(startScene);
-		gameManager = new GameManager();
-		gameWindow = new GameWindow(600, 600);
 		primaryStage.show();
 		
 		
 	}
-	public static void main(String[] args) {
-		Application.launch(args);
+	public static void main() {
+		Application.launch();
 		
 	}
 	/*public void gameStart(){
