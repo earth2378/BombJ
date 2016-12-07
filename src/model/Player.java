@@ -69,6 +69,4 @@ public abstract class Player extends Entity{
 		this.isWin = isWin;
 	}
 	
-	
-	
 }

@@ -1,11 +1,12 @@
 package model;
 
 import javafx.scene.canvas.GraphicsContext;
+import lib.RenderableHolder;
 
 public class Permanent extends Block{
 	private int life;
 	
-	public Permanent(int x, int y, int direction) {
+	public Permanent(int x, int y) {
 		super(x, y);
 		// TODO Auto-generated constructor stub
 		z = 1;
@@ -14,8 +15,7 @@ public class Permanent extends Block{
 
 	@Override
 	public void render(GraphicsContext gc) {
-		// TODO Auto-generated method stub
-		
+		gc.drawImage(RenderableHolder.permanent, x, y);
 	}
 	public boolean isDestroy(){
 		return false;

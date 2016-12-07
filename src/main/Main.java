@@ -14,6 +14,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import lib.CodeUtility;
+import lib.IRenderableObject;
+import lib.RenderableHolder;
 import logic.GameManager;
 import ui.GameScreen;
 
@@ -23,8 +25,8 @@ public class Main extends Application{
 	private Stage primaryStage;
 	private GameScreen gameScreen;
 	public Scene firstScene,secondScene;
-	private GameManager gameManager;
-	private GameWindow gameWindow;
+	//private GameManager gameManager;
+	//private GameWindow gameWindow;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -38,21 +40,21 @@ public class Main extends Application{
 		primaryStage.setScene(firstScene);
 		primaryStage.show();
 		
-		
-		
 	}
 	public static void main(String[] args) {
 		Application.launch(args);
 		
 	}
-	/*public void gameStart(){
+	public void gameStart(){
 			Group root = new Group();
-			gameScene = new Scene(root,600,600);
+			secondScene = new Scene(root,660,660);
+			GameWindow gameWindow = new GameWindow(660, 660);
 			root.getChildren().add(gameWindow);
-			primaryStage.setScene(gameScene);
+			GameManager gameManager = new GameManager();
+			gameWindow.paintComponents();
+			primaryStage.setScene(secondScene);
 			
-			
-			gameScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			secondScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
 				@Override
 				public void handle(KeyEvent event) {
@@ -65,7 +67,7 @@ public class Main extends Application{
 				}
 			});
 			
-			gameScene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+			secondScene.setOnKeyReleased(new EventHandler<KeyEvent>() {
 
 				@Override
 				public void handle(KeyEvent event) {
@@ -93,11 +95,11 @@ public class Main extends Application{
 					if(diff>=100000000l){
 						start = 0l;
 						gameManager.update();
-						gameWindow.f
+						gameWindow.paintComponents();
 						
 					}
 				}
 			}.start();
 		
-	}*/
+	}
 }

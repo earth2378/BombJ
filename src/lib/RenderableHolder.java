@@ -14,8 +14,8 @@ public class RenderableHolder {
 	private static final RenderableHolder instance = new RenderableHolder();
 	private List<IRenderableObject> entities;
 	private Comparator<IRenderableObject> comparator;
-	public static Image[] player1Up,player1Down,player1Left,player1Right,player2Up,player2Down,player2Left,player2Right,bomb1,bomb2;
-	public static Image explodable,permanent,heart,range,quantity,enemyup,enemydown,enemyright,enemyleft,flame1,flame2,plain;
+	public static Image[] bomb1,bomb2;
+	public static Image player1Up,player1Down,player1Left,player1Right,player2Up,player2Down,player2Left,player2Right,explodable,permanent,heart,range,quantity,enemyup,enemydown,enemyright,enemyleft,flame1,flame2,plain;
 	
 	public RenderableHolder(){
 		entities = new ArrayList<>();
@@ -42,53 +42,19 @@ public class RenderableHolder {
 		enemyright = new Image(loader.getResource("img/enemyright.png").toString());
 		enemyleft = new Image(loader.getResource("img/enemyleft.png").toString());
 		
-		player1Up = new Image[4];
-		player1Down = new Image[4];
-		player1Left = new Image[4];
-		player1Right = new Image[4];
-		player2Up = new Image[4];
-		player2Down = new Image[4];
-		player2Left = new Image[4];
-		player2Right = new Image[4];
-		
-		player1Down[0] = new Image(loader.getResource("img/player1down1.png").toString());
-		player1Down[1] = new Image(loader.getResource("img/player1down2.png").toString());
-		player1Down[2] = new Image(loader.getResource("img/player1down3.png").toString());
-		player1Down[3] = new Image(loader.getResource("img/player1down4.png").toString());
-		player1Up[0] = new Image(loader.getResource("img/player1up1.png").toString());
-		player1Up[1] = new Image(loader.getResource("img/player1up2.png").toString());
-		player1Up[2] = new Image(loader.getResource("img/player1up3.png").toString());
-		player1Up[3] = new Image(loader.getResource("img/player1up4.png").toString());
-		player1Left[0] = new Image(loader.getResource("img/player1left1.png").toString());
-		player1Left[1] = new Image(loader.getResource("img/player1left2.png").toString());
-		player1Left[2] = new Image(loader.getResource("img/player1left3.png").toString());
-		player1Left[3] = new Image(loader.getResource("img/player1left4.png").toString());
-		player1Right[0] = new Image(loader.getResource("img/player1right1.png").toString());
-		player1Right[1] = new Image(loader.getResource("img/player1right2.png").toString());
-		player1Right[2] = new Image(loader.getResource("img/player1right3.png").toString());
-		player1Right[3] = new Image(loader.getResource("img/player1right4.png").toString());
-		
-		player2Down[0] = new Image(loader.getResource("img/player2down1.png").toString());
-		player2Down[1] = new Image(loader.getResource("img/player2down2.png").toString());
-		player2Down[2] = new Image(loader.getResource("img/player2down3.png").toString());
-		player2Down[3] = new Image(loader.getResource("img/player2down4.png").toString());
-		player2Up[0] = new Image(loader.getResource("img/player2up1.png").toString());
-		player2Up[1] = new Image(loader.getResource("img/player2up2.png").toString());
-		player2Up[2] = new Image(loader.getResource("img/player2up3.png").toString());
-		player2Up[3] = new Image(loader.getResource("img/player2up4.png").toString());
-		player2Left[0] = new Image(loader.getResource("img/player2left1.png").toString());
-		player2Left[1] = new Image(loader.getResource("img/player2left2.png").toString());
-		player2Left[2] = new Image(loader.getResource("img/player2left3.png").toString());
-		player2Left[3] = new Image(loader.getResource("img/player2left4.png").toString());
-		player2Right[0] = new Image(loader.getResource("img/player2right1.png").toString());
-		player2Right[1] = new Image(loader.getResource("img/player2right2.png").toString());
-		player2Right[2] = new Image(loader.getResource("img/player2right3.png").toString());
-		player2Right[3] = new Image(loader.getResource("img/player2right4.png").toString());
+		player1Down = new Image(loader.getResource("img/p1down.gif").toString());
+		player1Up = new Image(loader.getResource("img/p1up.gif").toString());
+		player1Left = new Image(loader.getResource("img/p1left.gif").toString());
+		player1Right = new Image(loader.getResource("img/p1right.gif").toString());
+		player2Down = new Image(loader.getResource("img/p2down.gif").toString());
+		player2Up = new Image(loader.getResource("img/p2up.gif").toString());
+		player2Left = new Image(loader.getResource("img/p2left.gif").toString());
+		player2Right = new Image(loader.getResource("img/p2right.gif").toString());
 		
 		bomb1 = new Image[2];
 		bomb2 = new Image[2];
 		
-		bomb1[0] = new Image(loader.getResource("c").toString());
+		bomb1[0] = new Image(loader.getResource("img/bomb1c1.png").toString());
 		bomb1[1] = new Image(loader.getResource("img/bomb1c2.png").toString());
 		bomb2[0] = new Image(loader.getResource("img/bomb2c1.png").toString());
 		bomb2[1] = new Image(loader.getResource("img/bomb2c2.png").toString());
@@ -110,7 +76,6 @@ public class RenderableHolder {
 	
 	public void add(IRenderableObject entity) {
 		entities.add(entity);
-		sort();
 	}
 	
 	public void sort(){

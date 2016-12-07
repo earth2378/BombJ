@@ -27,12 +27,8 @@ public class Enemy extends Entity{
 	}
 	
 	public void attackPlayer(Player player){
+		player.setLife(0);
 		player.setDestroy(true);
 	}
-	
-	public void move(){
-		
-	}
-	
 	
 }

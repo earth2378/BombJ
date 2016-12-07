@@ -1,5 +1,7 @@
 package logic;
 
+import com.sun.xml.internal.stream.Entity;
+
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import lib.CodeUtility;
@@ -7,6 +9,8 @@ import lib.IRenderableObject;
 import lib.RenderableHolder;
 import model.Bomb;
 import model.Enemy;
+import model.Explodable;
+import model.Permanent;
 import model.Player1;
 import model.Player2;
 
@@ -16,31 +20,55 @@ public class GameManager {
 	private Player2 p2;
 	
 	public GameManager(){
-		p1 = new Player1(0,0,3,"Player1");
-		p2 = new Player2(540, 540, 1, "Player2");
+		// player
+		p1 = new Player1(0,0,model.Entity.SOUTH,"Player1");
+		p2 = new Player2(600, 600,model.Entity.NORTH, "Player2");
 		RenderableHolder.getInstance().add(p1);
 		RenderableHolder.getInstance().add(p2);
+		
+		//enemy
+		Enemy e1 = new Enemy(600, 0, model.Entity.SOUTH);
+		Enemy e2 = new Enemy(0, 600, model.Entity.NORTH);
+		RenderableHolder.getInstance().add(e1);
+		RenderableHolder.getInstance().add(e2);
+		
+		//Permanent
+		for(int i=60; i<=660; i=i+120 ){
+			for(int j=60; j<=660; j=j+120 ){
+				RenderableHolder.getInstance().add(new Permanent(i,j));
+			}
+		}
+		
+		//Explode
+		for(int i=120; i<540; i=i+60){
+			for(int j=0; j<=660;j=j+600){
+				RenderableHolder.getInstance().add(new Explodable(i,j));
+			}
+		}
+		
+		for(int i=120; i<540; i=i+60){
+			for(int j=0; j<=660;j=j+600){
+				RenderableHolder.getInstance().add(new Explodable(j,i));
+			}
+		}
+		
+		for(int i=60; i<=540; i+=60){
+			for(int j=120; j<=480; j+=120){
+				RenderableHolder.getInstance().add(new Explodable(i,j));
+			}
+		}
+		
+		for(int i=120; i<=480; i+=120){
+			for(int j=60; j<=540; j+=120){
+				RenderableHolder.getInstance().add(new Explodable(i,j));
+			}
+		}
+		
 	}
 	
 	public void update(){
-		Thread threadP1 = new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				moveP1();
-			}
-		});
-		
-		Thread threadP2 = new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				moveP2();
-			}
-		});
-		
-		threadP1.start();
-		threadP2.start();
+		moveP1();
+		moveP2();
 		
 		if(checkWin()){
 			
@@ -81,13 +109,13 @@ public class GameManager {
 			if(e instanceof Enemy){
 				if(p1.getX() == ((Enemy)e).getX()){
 					if(p1.getY() == ((Enemy)e).getY()){
-						p1.setLife(p1.getLife());
+						((Enemy) e).attackPlayer(p1);
 					}
 				}
 				
 				if(p2.getX() == ((Enemy)e).getX()){
 					if(p2.getY() == ((Enemy)e).getY()){
-						p2.setLife(p2.getLife());
+						((Enemy) e).attackPlayer(p2);
 					}
 				}
 			}

@@ -2,6 +2,11 @@ package main;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import lib.IRenderableObject;
+import lib.RenderableHolder;
+import model.Enemy;
+import model.Entity;
 
 public class GameWindow extends Canvas {
 	
@@ -16,6 +21,12 @@ public class GameWindow extends Canvas {
 		setHeight(screen_height);
 		setWidth(screen_width);
 		GraphicsContext gc = this.getGraphicsContext2D();
-		setStyle("-fx-background-image: url('img/plain.jpg'); ");
+		ClassLoader loader = ClassLoader.getSystemClassLoader();
+		Image bg = new Image(loader.getResource("img/plain.jpg").toString());
+		gc.drawImage(bg,0,0);
+		
+		for(IRenderableObject i : RenderableHolder.getInstance().getEntities()){
+			i.render(gc);
+		}
 	}
 }
