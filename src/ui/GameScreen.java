@@ -52,8 +52,12 @@ public class GameScreen extends BorderPane {
 				if (instruction.getText() == "How to play?") {
 					Image bg1 = new Image(ClassLoader.getSystemClassLoader().getResource("img/instruction.jpg").toString());
 					gc.drawImage(bg1, 0, 0);
-					instruction.setText("I got it!");
-				} else if (instruction.getText() == "I got it!") {
+					instruction.setText("Next");
+				} else if (instruction.getText() == "Next") {
+					Image bg2 = new Image(ClassLoader.getSystemClassLoader().getResource("img/instruction2.jpg").toString());
+					gc.drawImage(bg2, 0, 0);
+					instruction.setText("I got it!!");
+				} else if (instruction.getText() == "I got it!!") {
 					Image bg2 = new Image(ClassLoader.getSystemClassLoader().getResource("img/bg2.jpg").toString());
 					gc.drawImage(bg2, 0, 0);
 					instruction.setText("How to play?");
@@ -71,7 +75,7 @@ public class GameScreen extends BorderPane {
 
 			@Override
 			public void handle(ActionEvent event) {
-				stage.setScene(Main.instance.gameScene);
+				stage.setScene(Main.instance.secondScene);
 			}
 		});
 		
