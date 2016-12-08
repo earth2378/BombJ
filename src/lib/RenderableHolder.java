@@ -14,7 +14,9 @@ public class RenderableHolder {
 	private List<IRenderableObject> entities;
 	private Comparator<IRenderableObject> comparator;
 	public static Image[] bomb1,bomb2;
-	public static Image player1Up,player1Down,player1Left,player1Right,player2Up,player2Down,player2Left,player2Right,explodable,permanent,heart,range,quantity,enemyup,enemydown,enemyright,enemyleft,flame1,flame2,plain;
+	public static Image player1Up,player1Down,player1Left,player1Right,player2Up,
+	player2Down,player2Left,player2Right,explodable,permanent,heart,range,quantity,enemyup,
+	enemydown,enemyright,enemyleft,flame1,flame2,plain,head1,head2,hearthead;
 	
 	public RenderableHolder(){
 		entities = new ArrayList<>();
@@ -61,6 +63,10 @@ public class RenderableHolder {
 		flame1 = new Image(loader.getResource("img/flame1.png").toString());
 		flame2 = new Image(loader.getResource("img/flame2.png").toString());
 		plain = new Image(loader.getResource("img/plain.jpg").toString());
+		
+		head1 = new Image(loader.getResource("img/head1.png").toString());
+		head2 = new Image(loader.getResource("img/head2.png").toString());
+		hearthead = new Image(loader.getResource("img/hearthead.png").toString());
 		
 	}
 	
