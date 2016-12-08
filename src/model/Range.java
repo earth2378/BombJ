@@ -1,6 +1,7 @@
 package model;
 
 import javafx.scene.canvas.GraphicsContext;
+import lib.AudioUtility;
 import lib.RenderableHolder;
 
 public class Range extends Item{
@@ -14,6 +15,7 @@ public class Range extends Item{
 		if(!isDestroy){
 			p.setRange(p.getRange() + 1);
 			isDestroy = true;
+			AudioUtility.playSound("collect");
 		}
 	}
 

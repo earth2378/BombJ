@@ -1,6 +1,7 @@
 package model;
 
 import javafx.scene.canvas.GraphicsContext;
+import lib.AudioUtility;
 import lib.RenderableHolder;
 
 public class Quantity extends Item {
@@ -14,6 +15,7 @@ public class Quantity extends Item {
 		if(!isDestroy){
 			p.setQuantity(p.getQuantity() + 1);
 			isDestroy = true;
+			AudioUtility.playSound("collect");
 		}
 	}
 

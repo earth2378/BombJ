@@ -3,6 +3,7 @@ package logic;
 import java.util.Random;
 
 import javafx.scene.input.KeyCode;
+import lib.AudioUtility;
 import lib.CodeUtility;
 import lib.RenderableHolder;
 import model.Bomb;
@@ -243,6 +244,7 @@ public class GameManager {
 					field.setField(((Bomb) RenderableHolder.getInstance().getEntities().get(i)).getX()/60, ((Bomb) RenderableHolder.getInstance().getEntities().get(i)).getY()/60, 0);
 					((Bomb) RenderableHolder.getInstance().getEntities().get(i)).setDestroy(true);
 					((Bomb) RenderableHolder.getInstance().getEntities().get(i)).getPlayer().setBombCount(((Bomb) RenderableHolder.getInstance().getEntities().get(i)).getPlayer().getBombCount()-1);
+					AudioUtility.playSound("boom");
 				}
 				
 				if(((Bomb) RenderableHolder.getInstance().getEntities().get(i)).getCount() < 15){

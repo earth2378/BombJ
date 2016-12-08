@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import lib.AudioUtility;
 import logic.GameManager;
 import ui.GameScreen;
 
@@ -18,6 +19,7 @@ public class Main extends Application{
 	private Stage primaryStage;
 	private GameScreen gameScreen;
 	public Scene firstScene,secondScene;
+	public Thread sound1,sound2;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -29,6 +31,14 @@ public class Main extends Application{
 		gameScreen = new GameScreen(primaryStage);
 		firstScene = new Scene(gameScreen);
 		primaryStage.setScene(firstScene);
+		sound1 = new Thread(new Runnable() {
+			
+			@Override
+			public void run(){
+				AudioUtility.playSound("first");
+			}
+		});
+		sound1.start();
 		primaryStage.show();
 		
 	}
@@ -38,13 +48,23 @@ public class Main extends Application{
 	}
 	public void gameStart(){
 			Group root = new Group();
-			secondScene = new Scene(root,660,660);
+			secondScene = new Scene(root,660,760);
 			GameWindow gameWindow = new GameWindow(660, 660);
 			root.getChildren().add(gameWindow);
 			GameManager gameManager = new GameManager();
 			gameWindow.paintComponents();
 			primaryStage.setScene(secondScene);
-			
+			sound2 = new Thread(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					while(true){
+						AudioUtility.playSound("Second");
+					}
+				}
+			});
+			sound2.start();
 			secondScene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 
 				@Override

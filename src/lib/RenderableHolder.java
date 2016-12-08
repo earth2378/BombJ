@@ -16,7 +16,7 @@ public class RenderableHolder {
 	public static Image[] bomb1,bomb2;
 	public static Image player1Up,player1Down,player1Left,player1Right,player2Up,
 	player2Down,player2Left,player2Right,explodable,permanent,heart,range,quantity,enemyup,
-	enemydown,enemyright,enemyleft,flame1,flame2,plain,head1,head2,hearthead;
+	enemydown,enemyright,enemyleft,flame1,flame2,plain,head1,head2,hearthead,statusbg;
 	
 	public RenderableHolder(){
 		entities = new ArrayList<>();
@@ -67,6 +67,7 @@ public class RenderableHolder {
 		head1 = new Image(loader.getResource("img/head1.png").toString());
 		head2 = new Image(loader.getResource("img/head2.png").toString());
 		hearthead = new Image(loader.getResource("img/hearthead.png").toString());
+		statusbg = new Image(loader.getResource("img/statusbg.jpg").toString());
 		
 	}
 	

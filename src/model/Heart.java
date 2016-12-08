@@ -1,6 +1,7 @@
 package model;
 
 import javafx.scene.canvas.GraphicsContext;
+import lib.AudioUtility;
 import lib.RenderableHolder;
 
 public class Heart extends Item {
@@ -14,6 +15,7 @@ public class Heart extends Item {
 		if(!isDestroy){
 			p.setLife(p.getLife() + life);
 			isDestroy = true;
+			AudioUtility.playSound("collect");
 		}
 	}
 

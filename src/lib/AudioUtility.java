@@ -12,10 +12,10 @@ public class AudioUtility {
 
 	public static void loadResource() {
 		ClassLoader loader = ClassLoader.getSystemClassLoader();
-		sound_collect = new AudioClip(loader.getResource("sound/").toString());
-		sound_boom = new AudioClip(loader.getResource("sound/").toString());
-		sound_first = new AudioClip(loader.getResource("sound/").toString());
-		sound_second = new AudioClip(loader.getResource("sound/").toString());
+		sound_collect = new AudioClip(loader.getResource("sound/collect.wav").toString());
+		sound_boom = new AudioClip(loader.getResource("sound/boom.wav").toString());
+		sound_first = new AudioClip(loader.getResource("sound/op.wav").toString());
+		sound_second = new AudioClip(loader.getResource("sound/naturesounds.wav").toString());
 	}
 
 	public static void playSound(String identifier) {
