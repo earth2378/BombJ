@@ -10,6 +10,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import lib.AudioUtility;
 import logic.GameManager;
+import logic.GameWindow;
 import ui.GameScreen;
 
 public class Main extends Application {
