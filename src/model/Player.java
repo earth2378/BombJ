@@ -6,7 +6,6 @@ public abstract class Player extends Entity{
 	private int life,score,range,quantity,movingDelay;
 	private int movingDelayCounter = 1;
 	private int moveSpeed = 60;
-	private boolean isWin;
 	private int bombCount = 0;
 	protected String name;
 	
@@ -17,7 +16,6 @@ public abstract class Player extends Entity{
 		this.range = 1;
 		this.quantity = 1;
 		this.isDestroy = false;
-		this.isWin = false;
 		this.name = name;
 		
 	}
@@ -36,10 +34,6 @@ public abstract class Player extends Entity{
 	
 	public int getQuantity(){
 		return quantity;
-	}
-	
-	public boolean isWin(){
-		return isWin;
 	}
 	
 	public String getName(){
@@ -67,10 +61,6 @@ public abstract class Player extends Entity{
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
-	}
-
-	public void setWin(boolean isWin) {
-		this.isWin = isWin;
 	}
 
 	public int getMovingDelay() {

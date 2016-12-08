@@ -2,6 +2,9 @@ package logic;
 
 import java.util.Random;
 
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import lib.AudioUtility;
 import lib.CodeUtility;
@@ -92,9 +95,7 @@ public class GameManager {
 		flameAround();
 		moveEnemy();
 		checkItem();
-		if(checkWin()){
-			
-		}
+		checkWin();
 		
 		removeDestroyEntity();
 	}
@@ -113,11 +114,46 @@ public class GameManager {
 		}
 	}
 	
-	private boolean checkWin(){
-		if(p1.isWin() || p2.isWin()){
-			return true;
+	private void checkWin(){
+		if(p1.isDestroy() || p2.isDestroy()){
+			Alert alert = new Alert(AlertType.INFORMATION);
+			if(p1.isDestroy() && !p2.isDestroy()){
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						alert.setTitle("Player 2 Wins!!");
+						alert.setHeaderText(null);
+						alert.setContentText("Player 2 Win with" + p2.getScore());
+						alert.showAndWait();
+					}
+				});
+			}else if(p2.isDestroy() && !p1.isDestroy()){
+				Platform.runLater(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						alert.setTitle("Player 1 Wins!!");
+						alert.setHeaderText(null);
+						alert.setContentText("Player 1 Win with" + p1.getScore());
+						alert.showAndWait();
+					}
+				});
+			}else if(p1.isDestroy() && p2.isDestroy()){
+					Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						alert.setTitle("Draws");
+						alert.setHeaderText(null);
+						alert.setContentText("Player 1 : " + p1.getScore() +"\n"+"Player 2 : "+p2.getScore());
+						alert.showAndWait();
+					}
+				});
+			}
 		}else{
-			return false;
+			
 		}
 	}
 	
