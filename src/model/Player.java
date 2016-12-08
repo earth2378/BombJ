@@ -1,55 +1,56 @@
 package model;
 
-public abstract class Player extends Entity{
-	
+public abstract class Player extends Entity {
+
 	// moving delay is required
-	private int life,score,range,quantity,movingDelay;
+	private int life, score, range, quantity, movingDelay;
 	private int movingDelayCounter = 1;
 	private int moveSpeed = 60;
 	private int bombCount = 0;
 	protected String name;
-	
-	public Player(int x,int y, int direction,String name){
-		super(x,y,direction);
+
+	public Player(int x, int y, int direction, String name) {
+		super(x, y, direction);
 		this.life = 6;
 		this.score = 0;
 		this.range = 1;
 		this.quantity = 1;
 		this.isDestroy = false;
 		this.name = name;
-		
+
 	}
-	
-	public int getLife(){
+
+	public int getLife() {
 		return life;
 	}
-	
-	public int getScore(){
+
+	public int getScore() {
 		return score;
 	}
-	
-	public int getRange(){
+
+	public int getRange() {
 		return range;
 	}
-	
-	public int getQuantity(){
+
+	public int getQuantity() {
 		return quantity;
 	}
-	
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
-	
-	public int getMoveSpeed(){
+
+	public int getMoveSpeed() {
 		return moveSpeed;
 	}
 
 	public void setLife(int life) {
-		
+
 		this.life = life;
-		if(life == 0){
-			isDestroy=true;
-		}if(this.life >= 10){
+		if (life == 0) {
+			isDestroy = true;
+		}
+		if (this.life >= 10) {
 			this.life = 10;
 		}
 	}
@@ -89,6 +90,5 @@ public abstract class Player extends Entity{
 	public void setBombCount(int bombCount) {
 		this.bombCount = bombCount;
 	}
-	
-	
+
 }

@@ -4,8 +4,8 @@ import javafx.scene.media.AudioClip;
 
 public class AudioUtility {
 
-	private static AudioClip sound_collect,sound_boom,sound_first,sound_second;
-	
+	private static AudioClip sound_collect, sound_boom, sound_first, sound_second;
+
 	static {
 		loadResource();
 	}
@@ -19,13 +19,13 @@ public class AudioUtility {
 	}
 
 	public static void playSound(String identifier) {
-		if(identifier == "collect"){
+		if (identifier == "collect") {
 			sound_collect.play();
-		}else if(identifier == "boom"){
+		} else if (identifier == "boom") {
 			sound_boom.play();
-		}else if(identifier == "first"){
+		} else if (identifier == "first") {
 			sound_first.play();
-		}else if(identifier == "second"){
+		} else if (identifier == "second") {
 			sound_second.play();
 		}
 	}

@@ -9,10 +9,10 @@ public class Quantity extends Item {
 	public Quantity(int x, int y, int direction) {
 		super(x, y, direction);
 	}
-	
+
 	@Override
 	public void useItem(Player p) {
-		if(!isDestroy){
+		if (!isDestroy) {
 			p.setQuantity(p.getQuantity() + 1);
 			isDestroy = true;
 			AudioUtility.playSound("collect");

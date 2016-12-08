@@ -3,9 +3,9 @@ package model;
 import javafx.scene.canvas.GraphicsContext;
 import lib.RenderableHolder;
 
-public class Explodable extends Block{
+public class Explodable extends Block {
 	private int life;
-	
+
 	public Explodable(int x, int y) {
 		super(x, y);
 		setLife(1);
@@ -22,8 +22,8 @@ public class Explodable extends Block{
 
 	public void setLife(int life) {
 		this.life = life;
-		if(life==0){
-			isDestroy=true;
+		if (life == 0) {
+			isDestroy = true;
 		}
 	}
 

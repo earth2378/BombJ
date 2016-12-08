@@ -7,8 +7,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import lib.IRenderableObject;
 import lib.RenderableHolder;
-import logic.GameManager;
-import model.Player;
 import model.Player1;
 import model.Player2;
 

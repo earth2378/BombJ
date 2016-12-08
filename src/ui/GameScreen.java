@@ -14,16 +14,15 @@ import javafx.stage.Stage;
 import main.Main;
 
 public class GameScreen extends BorderPane {
-	
+
 	public GameScreen(Stage stage) {
-		
-		setPrefSize(800,600);
-		//setPadding(new Insets(0));
+
+		setPrefSize(800, 600);
 		ClassLoader loader = ClassLoader.getSystemClassLoader();
 		Image bg = new Image(loader.getResource("img/bg2.jpg").toString());
-		Canvas canvas = new Canvas(800,600);
+		Canvas canvas = new Canvas(800, 600);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		gc.drawImage(bg, 12,12);
+		gc.drawImage(bg, 12, 12);
 		GridPane bottom = new GridPane();
 		bottom.setPrefSize(800, 50);
 		bottom.setAlignment(Pos.CENTER);
@@ -34,26 +33,27 @@ public class GameScreen extends BorderPane {
 		start.setPrefSize(150, 30);
 		exit.setPrefSize(150, 30);
 		instruction.setPrefSize(150, 30);
-		
+
 		bottom.setHgap(100);
 		bottom.add(start, 0, 0);
 		bottom.add(exit, 2, 0);
 		bottom.add(instruction, 1, 0);
-		
+
 		setTop(canvas);
 		setBottom(bottom);
-		
+
 		instruction.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent event) {
-				// TODO Auto-generated method stub
 				if (instruction.getText() == "How to play?") {
-					Image bg1 = new Image(ClassLoader.getSystemClassLoader().getResource("img/instruction.jpg").toString());
+					Image bg1 = new Image(
+							ClassLoader.getSystemClassLoader().getResource("img/instruction.jpg").toString());
 					gc.drawImage(bg1, 12, 12);
 					instruction.setText("Next");
 				} else if (instruction.getText() == "Next") {
-					Image bg2 = new Image(ClassLoader.getSystemClassLoader().getResource("img/instruction2.jpg").toString());
+					Image bg2 = new Image(
+							ClassLoader.getSystemClassLoader().getResource("img/instruction2.jpg").toString());
 					gc.drawImage(bg2, 12, 12);
 					instruction.setText("I got it!!");
 				} else if (instruction.getText() == "I got it!!") {
@@ -74,11 +74,10 @@ public class GameScreen extends BorderPane {
 
 			@Override
 			public void handle(ActionEvent event) {
-				Main.instance.setStopSound1(true);
 				Main.instance.gameStart();
 			}
 		});
-		
+
 	}
-	
+
 }
