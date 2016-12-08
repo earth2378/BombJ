@@ -18,8 +18,9 @@ public class Main extends Application{
 	public static Main instance;
 	private Stage primaryStage;
 	private GameScreen gameScreen;
-	public Scene firstScene,secondScene;
-	public Thread sound1,sound2;
+	private Scene firstScene,secondScene;
+	private Thread sound1,sound2;
+	private boolean isStopSound1 = false;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -32,7 +33,6 @@ public class Main extends Application{
 		firstScene = new Scene(gameScreen);
 		primaryStage.setScene(firstScene);
 		sound1 = new Thread(new Runnable() {
-			
 			@Override
 			public void run(){
 				AudioUtility.playSound("first");
@@ -46,6 +46,7 @@ public class Main extends Application{
 		Application.launch(args);
 		
 	}
+	
 	public void gameStart(){
 			Group root = new Group();
 			secondScene = new Scene(root,660,760);
@@ -59,9 +60,7 @@ public class Main extends Application{
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					while(true){
-						AudioUtility.playSound("Second");
-					}
+					AudioUtility.playSound("second");
 				}
 			});
 			sound2.start();
@@ -108,5 +107,17 @@ public class Main extends Application{
 				}
 			}.start();
 		
+	}
+	public Thread getSound1() {
+		return sound1;
+	}
+	public Thread getSound2() {
+		return sound2;
+	}
+	public boolean isStopSound1() {
+		return isStopSound1;
+	}
+	public void setStopSound1(boolean isStopSound1) {
+		this.isStopSound1 = isStopSound1;
 	}
 }

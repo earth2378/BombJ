@@ -74,7 +74,7 @@ public class GameScreen extends BorderPane {
 
 			@Override
 			public void handle(ActionEvent event) {
-				Main.instance.sound1.interrupt();
+				Main.instance.setStopSound1(true);
 				Main.instance.gameStart();
 			}
 		});
