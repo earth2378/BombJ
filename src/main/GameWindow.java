@@ -5,8 +5,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import lib.IRenderableObject;
 import lib.RenderableHolder;
-import model.Enemy;
-import model.Entity;
 
 public class GameWindow extends Canvas {
 	

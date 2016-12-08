@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Random;
+
 import javafx.scene.canvas.GraphicsContext;
 import lib.RenderableHolder;
 import logic.GameManager;
@@ -30,7 +32,8 @@ public class Enemy extends Entity{
 	
 	public void move(){
 		if(moveDelayCounter==moveDelay){
-			int step = (int)(Math.random()*5 + 1);
+			Random rand = new Random();
+			int step = rand.nextInt(8)+1;
 			if(step != 1){
 				if(direction == model.Entity.NORTH){
 					int j = (y-60)/60;
@@ -40,7 +43,7 @@ public class Enemy extends Entity{
 							if(GameManager.instance.myField().getField(i, j) == 0){
 								setY(y-=60);
 							}else{
-								int turn = (int)(Math.random()*4);
+								int turn = rand.nextInt(5);
 								setDirection(turn);
 							}
 						}
@@ -53,7 +56,7 @@ public class Enemy extends Entity{
 							if(GameManager.instance.myField().getField(i, j) == 0){
 								setX(x-=60);
 							}else{
-								int turn = (int)(Math.random()*4);
+								int turn = rand.nextInt(4);
 								setDirection(turn);
 							}
 						}
@@ -66,7 +69,7 @@ public class Enemy extends Entity{
 							if(GameManager.instance.myField().getField(i, j) == 0){
 								setY(y+=60);
 							}else{
-								int turn = (int)(Math.random()*4);
+								int turn = rand.nextInt(4);
 								setDirection(turn);
 							}
 						}
@@ -79,7 +82,7 @@ public class Enemy extends Entity{
 							if(GameManager.instance.myField().getField(i, j) == 0){
 								setX(x+=60);
 							}else{
-								int turn = (int)(Math.random()*4);
+								int turn = rand.nextInt(4);
 								setDirection(turn);
 							}
 						}
@@ -87,7 +90,7 @@ public class Enemy extends Entity{
 				}
 			}
 			if(step == 1){
-				int turn = (int)(Math.random()*4);
+				int turn = rand.nextInt(4);
 				setDirection(turn);
 			}
 			moveDelayCounter=0;
