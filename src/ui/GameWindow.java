@@ -1,4 +1,4 @@
-package logic;
+package ui;
 
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,7 +15,7 @@ public class GameWindow extends Canvas {
 	public static int screen_width, screen_height;
 	
 	public GameWindow(int width,int height) {
-		screen_height = height+100;
+		screen_height = height;
 		screen_width = width;
 	}
 	

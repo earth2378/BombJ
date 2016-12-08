@@ -20,7 +20,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="logic.Field" project="BombJ" file="/BombJ/src/logic/Field.java" binary="false" 
+  <class id="3" language="java" name="model.Field" project="BombJ" file="/BombJ/src/model/Field.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="322" y="358"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -38,8 +38,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="logic.GameWindow" project="BombJ" file="/BombJ/src/logic/GameWindow.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="ui.GameWindow" project="BombJ" file="/BombJ/src/ui/GameWindow.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="320" y="190"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -237,76 +237,76 @@
     </display>  
   </class>  
   <generalization id="27">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="13"/>  
-  </generalization>  
-  <generalization id="28">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="14"/>  
-  </generalization>  
-  <generalization id="29">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="20"/>  
-  </generalization>  
-  <generalization id="30">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="24"/>  
-  </generalization>  
-  <generalization id="31">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <generalization id="32">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <generalization id="33">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <generalization id="34">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="20"/>  
-  </generalization>  
-  <generalization id="35">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <realization id="36">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <realization id="37">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <generalization id="38">    
-    <end type="SOURCE" refId="26"/>    
-    <end type="TARGET" refId="24"/>  
-  </generalization>  
-  <realization id="39">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <generalization id="40">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="20"/>  
-  </generalization>  
-  <generalization id="41">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="6"/>  
-  </generalization>  
-  <generalization id="42">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="17"/>  
-  </generalization>  
-  <generalization id="43">    
     <end type="SOURCE" refId="20"/>    
     <end type="TARGET" refId="17"/>  
   </generalization>  
-  <generalization id="44">    
+  <generalization id="28">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <generalization id="30">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <generalization id="31">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="20"/>  
+  </generalization>  
+  <realization id="32">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <generalization id="33">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="20"/>  
+  </generalization>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <realization id="35">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <generalization id="36">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="17"/>  
+  </generalization>  
+  <generalization id="37">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="20"/>  
+  </generalization>  
+  <generalization id="38">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="39">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="24"/>  
+  </generalization>  
+  <generalization id="40">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <generalization id="41">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <generalization id="42">    
     <end type="SOURCE" refId="16"/>    
     <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <realization id="43">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <generalization id="44">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

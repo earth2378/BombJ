@@ -1,4 +1,4 @@
-package logic;
+package model;
 
 public class Field {
 	public int[][] field = new int[11][11];

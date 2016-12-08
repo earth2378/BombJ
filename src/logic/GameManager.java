@@ -14,6 +14,7 @@ import main.Main;
 import model.Bomb;
 import model.Enemy;
 import model.Explodable;
+import model.Field;
 import model.Flame;
 import model.Heart;
 import model.Item;

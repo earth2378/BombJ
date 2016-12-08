@@ -10,8 +10,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import lib.AudioUtility;
 import logic.GameManager;
-import logic.GameWindow;
 import ui.GameScreen;
+import ui.GameWindow;
 
 public class Main extends Application {
 
@@ -49,7 +49,7 @@ public class Main extends Application {
 	public void gameStart() {
 		Group root = new Group();
 		secondScene = new Scene(root, 660, 760);
-		GameWindow gameWindow = new GameWindow(660, 660);
+		GameWindow gameWindow = new GameWindow(660, 760);
 		root.getChildren().add(gameWindow);
 		GameManager gameManager = new GameManager();
 		gameWindow.paintComponents();

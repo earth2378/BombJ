@@ -20,6 +20,8 @@ public class RenderableHolder {
 
 	public RenderableHolder() {
 		entities = new ArrayList<>();
+		bomb1 = new Image[2];
+		bomb2 = new Image[2];
 		comparator = (IRenderableObject o1, IRenderableObject o2) -> {
 			if (o1.getZ() > o2.getZ())
 				return 1;
@@ -51,9 +53,6 @@ public class RenderableHolder {
 		player2Up = new Image(loader.getResource("img/p2up.gif").toString());
 		player2Left = new Image(loader.getResource("img/p2left.gif").toString());
 		player2Right = new Image(loader.getResource("img/p2right.gif").toString());
-
-		bomb1 = new Image[2];
-		bomb2 = new Image[2];
 
 		bomb1[0] = new Image(loader.getResource("img/bomb1c1.png").toString());
 		bomb1[1] = new Image(loader.getResource("img/bomb1c2.png").toString());
