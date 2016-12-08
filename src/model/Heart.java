@@ -13,7 +13,7 @@ public class Heart extends Item {
 	@Override
 	public void useItem(Player p) {
 		if(!isDestroy){
-			p.setLife(p.getLife() + life);
+			p.setLife(p.getLife() + life*2);
 			isDestroy = true;
 			AudioUtility.playSound("collect");
 		}

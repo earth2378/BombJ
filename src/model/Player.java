@@ -11,7 +11,7 @@ public abstract class Player extends Entity{
 	
 	public Player(int x,int y, int direction,String name){
 		super(x,y,direction);
-		this.life = 10;
+		this.life = 6;
 		this.score = 0;
 		this.range = 1;
 		this.quantity = 1;
@@ -45,9 +45,12 @@ public abstract class Player extends Entity{
 	}
 
 	public void setLife(int life) {
+		
 		this.life = life;
 		if(life == 0){
 			isDestroy=true;
+		}if(this.life >= 10){
+			this.life = 10;
 		}
 	}
 
