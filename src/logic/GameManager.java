@@ -122,7 +122,7 @@ public class GameManager {
 				Platform.runLater(new Runnable() {
 					@Override
 					public void run() {
-						Main.instance.setPause(true);
+						Main.instance.setEnd(true);
 						try {
 							throw new WinException(p2);
 						} catch (WinException e) {
@@ -133,7 +133,7 @@ public class GameManager {
 				Platform.runLater(new Runnable() {
 					@Override
 					public void run() {
-						Main.instance.setPause(true);
+						Main.instance.setEnd(true);
 						try {
 							throw new WinException(p1);
 						} catch (WinException e) {
@@ -144,7 +144,7 @@ public class GameManager {
 				Platform.runLater(new Runnable() {
 					@Override
 					public void run() {
-						Main.instance.setPause(true);
+						Main.instance.setEnd(true);
 						try {
 							throw new WinException(p1, p2);
 						} catch (WinException e) {
@@ -263,17 +263,19 @@ public class GameManager {
 						}
 					}
 				}
-			} else if (CodeUtility.keyPressed.contains(KeyCode.CONTROL)) {
+			} else if (CodeUtility.keyPressed.contains(KeyCode.CONTROL)
+					&& !CodeUtility.keyTriggerd.contains(KeyCode.CONTROL)) {
 				if (p2.getBombCount() < p2.getQuantity()) {
 					RenderableHolder.getInstance().addAndSort(new Bomb(p2.getX(), p2.getY(), p2, p2.getRange()));
 					field.setField(p2.getX() / 60, p2.getY() / 60, 1);
 					p2.setBombCount(p2.getBombCount() + 1);
+					CodeUtility.keyTriggerd.add(KeyCode.CONTROL);
 				}
 			}
 		}
 	}
 
-	private synchronized void moveBomb() {
+	private void moveBomb() {
 		List<IRenderableObject> entities = RenderableHolder.getInstance().getEntities();
 		for (int i = 0; i < entities.size(); i++) {
 			if (entities.get(i) instanceof Bomb) {
@@ -406,32 +408,26 @@ public class GameManager {
 
 		if (!e1.isDestroy()) {
 			e1.move();
-		}
-
-		if (!e2.isDestroy()) {
-			e2.move();
-		}
-		if (!e1.isDestroy()) {
 			if (e1.getX() == p1.getX() && e1.getY() == p1.getY()) {
 				e1.attackPlayer(p1);
 			} else if (e1.getX() == p2.getX() && e1.getY() == p2.getY()) {
 				e1.attackPlayer(p2);
 			}
 		}
+
 		if (!e2.isDestroy()) {
+			e2.move();
 			if (e2.getX() == p1.getX() && e2.getY() == p1.getY()) {
 				e2.attackPlayer(p1);
 			} else if (e2.getX() == p2.getX() && e2.getY() == p2.getY()) {
 				e2.attackPlayer(p2);
 			}
 		}
-
 	}
 
 	private void randomItem(int x, int y) {
 		Random rand = new Random();
 		int drop = rand.nextInt(100);
-		System.out.println(drop);
 		if (drop <= 10) {
 			RenderableHolder.getInstance().add(new Range(x, y, model.Entity.SOUTH));
 		} else if (drop <= 20) {

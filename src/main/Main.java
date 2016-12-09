@@ -20,7 +20,7 @@ public class Main extends Application {
 	private GameScreen gameScreen;
 	private Scene firstScene, secondScene;
 	private Thread sound1, sound2;
-	private boolean isPause = false;
+	private boolean isEnd = false;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -99,7 +99,7 @@ public class Main extends Application {
 				long diff = now - start;
 				if (diff >= 100000000l) {
 					start = 0l;
-					if (!isPause) {
+					if (!isEnd) {
 						gameManager.update();
 						gameWindow.paintComponents();
 						gameWindow.paintStatusBar();
@@ -118,12 +118,12 @@ public class Main extends Application {
 		return sound2;
 	}
 
-	public boolean isPause() {
-		return isPause;
+	public boolean isEnd() {
+		return isEnd;
 	}
 
-	public void setPause(boolean isPause) {
-		this.isPause = isPause;
+	public void setEnd(boolean isPause) {
+		this.isEnd = isPause;
 	}
 
 	public Stage getPrimaryStage() {
