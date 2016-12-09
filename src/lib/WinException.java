@@ -16,15 +16,15 @@ public class WinException extends Throwable {
 	public WinException(Player player) {
 		alert = new Alert(AlertType.INFORMATION);
 		if (player instanceof Player2) {
-			alert.setTitle("Player 2 Wins!!");
+			alert.setTitle(player.getName() + " Wins!!");
 		} else if (player instanceof Player1) {
-			alert.setTitle("Player 1 Wins!!");
+			alert.setTitle(player.getName() + " Wins!!");
 		}
 		alert.setHeaderText(null);
 		if (player instanceof Player2) {
-			alert.setContentText("Player 2 is the WINNER " + "\nScore : "+player.getScore());
+			alert.setContentText(player.getName() + " is the WINNER " + "\nScore : "+player.getScore());
 		} else if (player instanceof Player1) {
-			alert.setContentText("Player 1 is the WINNER " + "\nScore : "+player.getScore());
+			alert.setContentText(player.getName() + " is the WINNER " + "\nScore : "+player.getScore());
 		}
 		alert.showAndWait().ifPresent(response -> {
 			if (response == ButtonType.OK) {
@@ -37,7 +37,7 @@ public class WinException extends Throwable {
 		alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Draws");
 		alert.setHeaderText(null);
-		alert.setContentText("Player 1 got " + p1.getScore() + "\nPlayer 2 got " + p2.getScore());
+		alert.setContentText(p1.getName() + " got " + p1.getScore() + "\n" + p2.getName() + " got " + p2.getScore());
 		alert.showAndWait().ifPresent(response -> {
 			if (response == ButtonType.OK) {
 				Platform.exit();

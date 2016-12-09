@@ -47,8 +47,8 @@ public class GameManager {
 		RenderableHolder.getInstance().add(e2);
 
 		// player
-		p1 = new Player1(0, 0, model.Entity.SOUTH, "Player1");
-		p2 = new Player2(600, 600, model.Entity.NORTH, "Player2");
+		p1 = new Player1(0, 0, model.Entity.SOUTH, "Cirno");
+		p2 = new Player2(600, 600, model.Entity.NORTH, "Aya");
 		RenderableHolder.getInstance().add(p1);
 		RenderableHolder.getInstance().add(p2);
 

@@ -33,7 +33,7 @@ public class Enemy extends Entity{
 	public void move(){
 		if(moveDelayCounter==moveDelay){
 			Random rand = new Random();
-			int step = rand.nextInt(8)+1;
+			int step = rand.nextInt(5)+1;
 			if(step != 1){
 				if(direction == model.Entity.NORTH){
 					int j = (y-60)/60;
@@ -43,7 +43,7 @@ public class Enemy extends Entity{
 							if(GameManager.instance.myField().getField(i, j) == 0){
 								setY(y-=60);
 							}else{
-								int turn = rand.nextInt(5);
+								int turn = rand.nextInt(4);
 								setDirection(turn);
 							}
 						}
