@@ -8,8 +8,8 @@ import logic.GameManager;
 
 public class Enemy extends Entity{
 	
-	protected int moveDelayCounter = 0;
-	protected final int moveDelay = 5;
+	private int moveDelayCounter = 0;
+	private final int moveDelay = 5;
 	
 	public Enemy(int x, int y, int direction) {
 		super(x, y, direction);
